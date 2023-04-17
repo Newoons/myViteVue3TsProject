@@ -2,9 +2,31 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import ElementPlus from "element-plus"
+import ElementPlus,{ Table } from "element-plus"
 import "element-plus/dist/index.css"
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import "./assets/css/common.scss"
-import axios from "axios"
+import "./assets/css/index.scss"
+import axios from "./request/request"
 
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+const app = createApp(App)
+
+// 饿了么图标
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
+// 解决el-table自适应问题
+// const fixELtableErr = table => {
+//     const oldResizeListener = table.methods.resizeListener
+//     table.methods.resizeListener = function () {
+//         window.requestAnimationFrame(oldResizeListener.bind(this))
+//     }
+// }
+// fixELtableErr(Table)
+app.config.globalProperties.$axios = axios;
+
+app.use(store)
+app.use(router)
+app.use(ElementPlus)
+app.mount('#app')
+
