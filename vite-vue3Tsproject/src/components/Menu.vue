@@ -1,6 +1,6 @@
 <template>
   <!-- 左侧菜单导航 -->
-  <template v-for="item in routerList[0].children" :key="item.name">
+  <template v-for="item in routerList[1].children" :key="item.name">
     <el-sub-menu v-if="item.children" :index="item.path">
       <template #title>
         <el-icon><Memo /></el-icon>

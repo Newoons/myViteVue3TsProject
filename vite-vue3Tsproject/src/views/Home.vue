@@ -58,7 +58,6 @@ export default defineComponent({
     );
 
     const selectMenuItem = (index: string, indexPath: string, item: object, routeResult: any) =>{
-      // console.log('i',item,routeResult)
     }
     return {
       isCollapse,
